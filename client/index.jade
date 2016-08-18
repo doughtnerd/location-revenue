@@ -1,0 +1,63 @@
+html
+  head
+    meta(charset='utf-8')
+    title Location Revenue Report
+    link(rel='stylesheet', type='text/css', href='./css/main.css')
+    link(rel='stylesheet prefetch', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    script(src='https://code.jquery.com/jquery-2.2.4.min.js')
+    script(src='./js/main.js')
+  body
+    header.container-fluid
+      .row
+        .col-xs-4
+          img.img-responsive(src='./img/alsco-logo.png')
+        .col-xs-8
+          | Location Revenue Per Pound Runner
+    .main-panel.container-fluid
+      #instructions.container-fluid
+        h3 Instructions
+        p
+          | To use this web application, follow the following steps:
+          ol
+            li
+              | Run the Revenue Per Pound Report from Alsco CRS
+              ol
+                li Go the Alsco CRS and log in
+                li Click on the 'Financial' category
+                li Click on Revenue Per Pound Report
+                li Enter the desired month, region, and plant
+                li Set the output type to xls
+                li Click the Run report button
+                li
+                  | When the report is finished, click 'View Report' and download the 'Location Summary' file
+                li Choose that report as the first file on this site
+            li
+              | Run the National Account Listing report from Abel.
+              ol
+                li Login to the branch Abel system
+                li
+                  | Run and save the report located under Processing > Reports > On Demand Reports > National Account Listing
+                li Open the csv file that was generated
+                li Save the file as an xlsx or xls file using Excel
+                li Choose that report as the second file on this site
+            li Click Submit and wait for the results to download
+        h3 Additional Info
+        p
+          | You can also download an application version of this report by following 
+          a(href='./download') this
+          |  link.
+        p
+          | Note: You will need java 8 update 101 to run the application version. You can download the latest version of java by following 
+          a(href='https://www.java.com/en/download/windows-64bit.jsp', target='_blank') this
+          |  link.
+      form#report-form(action='/run', method='POST', enctype='multipart/form-data')
+        .form-group
+          label(for='rev-report') Revenue Report From CRS
+          input#rev-report.form-control(type='file', name='reqFiles', accept='application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', required='')
+        .form-group
+          label(for='nat-report') National Acct Listing from Abel
+          input#nat-report.form-control(type='file', name='reqFiles', accept='application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', required='')
+        .form-group
+          input#submit-button.form-control.btn.btn-default(type='submit')
+    footer
+      | By: Christopher Carlson

@@ -7,7 +7,8 @@ module.exports = function(app){
     var settings = {};
     
     app.get('/', function(req, res){
-        res.sendFile(global.appRoot + "/client/index.html");
+        //res.sendFile(global.appRoot + "/client/index.html");
+        res.render(global.appRoot + '/client/index');
     });
     
     app.get('/download', function(req, res){
