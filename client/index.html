@@ -38,7 +38,7 @@
                         </li>
                         <li>Run the National Account Listing report from Abel.
                             <ol>
-                                <li>Login to the branch Abel system.</li>
+                                <li>Login to the branch Abel system</li>
                                 <li>Run and save the report located under Processing > Reports > On Demand Reports > National Account Listing</li>
                                 <li>Open the csv file that was generated</li>
                                 <li>Save the file as an xlsx or xls file using Excel</li>
@@ -50,19 +50,19 @@
                 </p>
                 <h3>Additional Info</h3>
                 <p>You can also download an application version of this report by following <a href='./download'>this</a> link.</p>
-                <p>Note that you will need java 8 update 101 to run this application. You can download the latest version of java by following <a href='https://www.java.com/en/download/windows-64bit.jsp'>this</a> link.</p>
+                <p>Note: You will need java 8 update 101 to run the application version. You can download the latest version of java by following <a href='https://www.java.com/en/download/windows-64bit.jsp' target='_blank'>this</a> link.</p>
             </div>
             <form action='/run' method='POST' enctype='multipart/form-data' id='report-form'>
                 <div class='form-group'>
                     <label for='rev-report'>Revenue Report From CRS</label>
-                    <input class='form-control' type='file' name='reqFiles' id='rev-report' required>
+                    <input class='form-control' type='file' name='reqFiles' id='rev-report' accept='application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' required>
                 </div>
                 <div class='form-group'>
                     <label for='nat-report'>National Acct Listing from Abel</label>
-                    <input class='form-control' type='file' name='reqFiles' id='nat-report' required>
+                    <input class='form-control' type='file' name='reqFiles' id='nat-report' accept='application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' required>
                 </div>
                 <div class='form-group'>
-                    <input class='form-control' type='submit' id='submit-button'>
+                    <input class='form-control btn btn-default' type='submit' id='submit-button'>
                 </div>
             </form>
         </div>
