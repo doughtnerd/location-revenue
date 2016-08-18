@@ -1,0 +1,43 @@
+body{
+    background-image:url(http://images.freepicturesweb.com/img1/20/13/d/057.jpg);
+}
+
+.main-panel{
+    color:white;
+    position: relative;
+    top:60px;
+    max-width:90vw;
+    border:1px solid green;
+    border-radius: 5px;
+    font-size:1em;
+    margin-bottom: 25px;
+}
+
+header{
+    color:white;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    background-color:black;
+    max-height:75px;
+    font-size:2em;
+    z-index: 1;
+}
+
+header >.row div:nth-child(1) img{
+    max-height:100%;
+    max-width:50%;
+}
+
+footer{
+    color:white;
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    width:100vw;
+    background-color:black;
+    height:auto;
+    text-align: center;
+}
+
