@@ -1,0 +1,23 @@
+-var message = msg;
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Error Page
+    link(rel='stylesheet', type='text/css', href='./css/main.css')
+    link(rel='stylesheet prefetch', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    script(src='https://code.jquery.com/jquery-2.2.4.min.js')
+    script(src='./js/main.js')
+  body
+    header.container-fluid
+      .row
+        .col-xs-4
+          img.img-responsive(src='./img/alsco-logo.png')
+        .col-xs-8
+          | Location Revenue Per Pound Runner
+    .main-panel.container-fluid
+        div
+            h3 Error:
+            p #{message}
+    footer
+      | By: Christopher Carlson
