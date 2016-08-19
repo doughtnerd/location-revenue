@@ -56,6 +56,7 @@ module.exports = function(app){
             var hash = common.createRandomHash(); 
             var resultFileName = hash + '.xlsx';
             var resultFileLocation = global.appRoot + '/server/results/'+ resultFileName;
+            console.log('executing jar...');
             exec('java -jar '+global.appRoot+'/server/jar/runner.jar ' + rev.path +' '+ nat.path+' '+resultFileLocation+' '+ .2, function(err, stdo, stde){
                 if(err){
                     rev = rev==undefined ? undefined : rev.path;
