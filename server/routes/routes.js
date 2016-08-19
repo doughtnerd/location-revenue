@@ -48,6 +48,7 @@ module.exports = function(app){
         if(rev==undefined || nat==undefined){
             rev = rev==undefined ? undefined : rev.path;
             nat = nat==undefined ? undefined : nat.path;
+            console.log('Error with upload, deleting files');
             common.deleteFiles(undefined, rev, nat);
             settings.msg='One or more files were invalid. Ensure that only xlsx or xls files are being used then try again.';
             res.render('errorpage', settings);
@@ -55,10 +56,11 @@ module.exports = function(app){
             var hash = common.createRandomHash(); 
             var resultFileName = hash + '.xlsx';
             var resultFileLocation = global.appRoot + '/server/results/'+ resultFileName;
-            exec('java -jar ./server/jar/runner.jar ' + rev.path +' '+ nat.path+' '+resultFileLocation+' '+ .2, function(err, stdo, stde){
+            exec('java -jar '+global.appRoot+'/server/jar/runner.jar ' + rev.path +' '+ nat.path+' '+resultFileLocation+' '+ .2, function(err, stdo, stde){
                 if(err){
                     rev = rev==undefined ? undefined : rev.path;
                     nat = nat==undefined ? undefined : nat.path;
+                    console.log('Error occurred while executing jar, deleting files.')
                     common.deleteFiles(undefined, rev, nat);
                     settings.msg='There was an error processing the report. Please ensure the correct source files are being used then try again.';
                     res.render('errorpage', settings);
