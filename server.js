@@ -2,6 +2,10 @@
 var express = require("express");
 var app = express();
 var path = require("path");
+var cookieParser = require("cookie-parser");
+var bodyParser = require("body-parser");
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
 
 //Set global variable root path that points to the base folder for this application.
 global.appRoot = path.resolve(__dirname);
@@ -16,8 +20,23 @@ app.set('view options', {
     layout: false
 });
 
+app.use(session({
+  name: 'server-session-cookie-id',
+  secret: 'my express secret',
+  cookie: { maxAge: 120000 },
+  saveUninitialized: false,
+  resave: false,
+  store: new FileStore({reapAsync:true, reapInterval:300})
+}));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
 //Mount static files to root.
-app.use(express.static(__dirname + '/client/'));
+app.use(express.static(__dirname + '/client'));
 
 //Route traffic.
 routes(app);

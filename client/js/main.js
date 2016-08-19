@@ -1,11 +1,15 @@
 $(document).ready(function(){
-    $('#submit-button').bind('click', function(){
+    $('.report-submit').bind('click', function(){
         var hasFiles = checkFileFields();
         var validExt = false;
         if(hasFiles){
             validExt = checkExtensions();
         }
         return hasFiles && validExt;
+    });
+    
+    $('.login-submit').bind('click', function(){
+        return true;
     });
 });
 

@@ -1,14 +1,33 @@
 var common = require(global.appRoot +"/server/common/serverfunctions.js");
 var upload = require(global.appRoot +"/server/config/multer-config.js");
-
 var exec = require("child_process").exec;
 
 module.exports = function(app){
     var settings = {};
     
     app.get('/', function(req, res){
-        //res.sendFile(global.appRoot + "/client/index.html");
-        res.render(global.appRoot + '/client/index');
+        if(req.session.loggedIn == undefined || req.session.loggedIn ==false){
+            res.redirect('/login');
+        } else {
+            res.render(global.appRoot + '/client/index');
+        }
+    });
+    
+    app.get('/login', function(req, res){
+        if(req.session.loggedIn){
+            res.redirect('/')
+        } else {
+            res.render(global.appRoot + '/client/login');
+        }
+    });
+    
+    app.post('/login', function(req, res){
+        if(req.body.username=='alsco' && req.body.password=='branch'){
+            req.session.loggedIn = true;
+            res.redirect('/');
+        } else {
+            res.send('Incorrect');
+        }
     });
     
     app.get('/download', function(req, res){
