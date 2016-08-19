@@ -42,7 +42,7 @@ module.exports = function(app){
     });
     
     app.post('/run', upload.array('reqFiles', 2) , function(req, res){
-        
+        console.log('checking for upload...');
         var rev = req.files[0];
         var nat = req.files[1];
         if(rev==undefined || nat==undefined){
@@ -55,7 +55,7 @@ module.exports = function(app){
         } else {
             var hash = common.createRandomHash(); 
             var resultFileName = hash + '.xlsx';
-            var resultFileLocation = global.appRoot + '/server/results/'+ resultFileName;
+            var resultFileLocation = global.appRoot + '/tmp/'+ resultFileName;
             console.log('executing jar...');
             exec('java -jar '+global.appRoot+'/server/jar/runner.jar ' + rev.path +' '+ nat.path+' '+resultFileLocation+' '+ .2, function(err, stdo, stde){
                 if(err){

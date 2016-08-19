@@ -4,7 +4,7 @@ var common = require(global.appRoot + '/server/common/serverfunctions.js');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, global.appRoot + '/server/uploads/')
+    cb(null, global.appRoot + '/tmp/')
   },
   filename: function (req, file, cb) {
     crypto.pseudoRandomBytes(16, function (err, raw) {
